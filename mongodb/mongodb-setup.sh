@@ -50,6 +50,7 @@ chown -R mongod:mongod /var/run/mongodb
 sed -i -e "s/run\/mongodb\/mongod.pid/run\/mongodb\/mongod.pid/" /etc/mongod.conf
 rm -rf /var/run/mongodb/mongod.pid
 
+systemctl enable mongod
 systemctl start mongod
 systemctl status mongod
 
@@ -98,11 +99,12 @@ sed -i -e "s/var\/lib\/mongo/data\/db1/" /etc/mongodb1.conf
 
 mkdir -p /var/run/mongodb1
 chown -R mongod:mongod /var/run/mongodb1
-sed -i -e "s/run\/mongodb\/mongod.pid/run\/mongodb1\/mongodb1.pid/" /etc/mongod1.conf
-rm -rf /var/run/mongodb1/mongod1.pid
+sed -i -e "s/run\/mongodb\/mongod.pid/run\/mongodb1\/mongodb1.pid/" /etc/mongodb1.conf
+rm -rf /var/run/mongodb1/mongodb1.pid
 
 
 systemctl daemon-reload
+systemctl enable mongodb1.service
 systemctl start mongodb1.service
 systemctl status mongodb1.service
 
@@ -146,10 +148,11 @@ sed -i -e "s/var\/lib\/mongo/data\/db2/" /etc/mongodb2.conf
 
 mkdir -p /var/run/mongodb2
 chown -R mongod:mongod /var/run/mongodb2
-sed -i -e "s/run\/mongodb\/mongod.pid/run\/mongodb2\/mongodb2.pid/" /etc/mongod1.conf
-rm -rf /var/run/mongodb2/mongod2.pid
+sed -i -e "s/run\/mongodb\/mongod.pid/run\/mongodb2\/mongodb2.pid/" /etc/mongodb2.conf
+rm -rf /var/run/mongodb2/mongodb2.pid
 
 
 systemctl daemon-reload
+systemctl enable mongodb2.service
 systemctl start mongodb2.service
 systemctl status mongodb2.service
