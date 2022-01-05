@@ -1,2 +1,3 @@
 # BASH
-Reflecting the shell scripts that have been developed over time basis of requirement
+
+Putting the shell scripts developed over time on basis of requirement.
