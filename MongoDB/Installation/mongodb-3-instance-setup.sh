@@ -1,3 +1,4 @@
+#!/bin/bash
 ##  the file is intentionally cluttered but it should  be easy to follow.
 
 yum erase -y $(rpm -qa | grep mongodb-org)
