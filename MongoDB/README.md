@@ -1,4 +1,5 @@
-# Mongo DB Installation
-Use Mongodb-setup for setting up 3 mongo services.
+# Mongo DB Installation script
 
-These 3 services firstly are standalone, but replication can be enabled to prepare a cluster.
+- Use scripts to install single/multi instance mongoDB.
+
+- Used over Amazon Linux 2
