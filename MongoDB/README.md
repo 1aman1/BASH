@@ -1,5 +1,6 @@
-# Mongo DB Installation script
+# Mongo DB Guide
 
-- Use these scripts to install single/multi instance mongoDB.
+- These scripts have been used over Amazon Linux 2
 
-- Used over Amazon Linux 2
+- Look over the Readmes for execution and understanding.
+
