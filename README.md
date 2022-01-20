@@ -1,3 +1,3 @@
 # BASH
 
-A few shell scripts written over time.
+Putting here all the useful shell script written over time.
