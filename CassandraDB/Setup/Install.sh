@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# it requires java
+# it requires java, python
+# in case setting up a new server it's good to remove first and explicitly setup required version like below.
 yum install -y java-1.8.0
 java -version
 
@@ -40,6 +41,8 @@ systemctl start cassandra
 systemctl enable cassandra
 systemctl status cassandra
 
-# if cqlsh throws errors of python library uncomment these
+# Try entering shell by typing-> cqlsh
+
+# In case python is not installed, cqlsh throws errors of python library, use these addons.
 #yum install -y pip
 #pip install cqlsh
