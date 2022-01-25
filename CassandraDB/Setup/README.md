@@ -1,11 +1,14 @@
 # CassandraDB
 
-Cassandra requires java and epel, take these as well if not already installed.
+Cassandra requires java, python & epel, perform these as well if not already installed.
 
 - amazon-linux-extras install -y epel
 - yum install -y  java-1.8.0
+- yum install -y pip
 
-use Install.sh to get straight forward cassandra installation or for a custom location of db/log use customInstall.sh .
+Install.sh will help in getting required CassandraDB installation.
+Follow customInstall.sh also if service needs to be relocated to a different directory other than /var/ .
+
 
 # Config file
 
