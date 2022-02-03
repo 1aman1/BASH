@@ -22,6 +22,6 @@ echo "--------------------------------------------- Completed STEP 3/4 - Backedu
 
 rm -rf /destn/logFolder/Mongo-$DATESUFFIX.zip
 rm -rf /destn/logFolder/Mongo-$DATESUFFIX
-echo "--------------------------------------------- Completed STEP 4/4 - Deleting local file---------------------------------------------"
+echo "--------------------------------------------- Completed STEP 4/4 - Deleted local file---------------------------------------------"
 
 echo -e "\e[1;31m ---------Backup finished for $DATESUFFIX ----!!  \e[0m"
