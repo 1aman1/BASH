@@ -1,0 +1,9 @@
+---
+- name: Install epel
+  hosts: epel
+  become: true
+
+  tasks:
+    - name: epel install
+      shell:
+         "amazon-linux-extras install -y epel"
