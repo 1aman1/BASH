@@ -1,0 +1,50 @@
+# follow this after mongo setup is done and service is running.
+# Use setup files if you want present in parent directory.
+
+systemctl status mongod
+hostname 
+#ip-172-31-83-173.ec2.internal
+cd /etc/pki/tls
+openssl genrsa -out CA-key.pem 2048
+openssl req -new -key CA-key.pem -x509 -days 1000 -out CA-cert.pem
+openssl genrsa -out server-key.pem 2048
+openssl req -new -config openssl.cnf -key server-key.pem -out signingreq.csr
+openssl x509 -req -days 1000 -in signingreq.csr -CA CA-cert.pem -CAkey CA-key.pem -CAcreateserial -out server-cert.pem
+cat /etc/pki/tls/server-cert.pem /etc/pki/tls/server-key.pem > /etc/pki/tls/serverpemkeyfile.pem
+vim /etc/mongod.conf
+
+# snippet
+net:
+  port: 27017
+  bindIp: 0.0.0.0
+  tls:
+    mode: requireTLS
+    certificateKeyFile: /etc/pki/tls/serverpemkeyfile.pem
+    CAFile: /etc/pki/tls/CA-cert.pem
+    allowConnectionsWithoutCertificates: true
+#
+
+systemctl restart mongod
+systemctl status mongod
+
+mongo --tls --host ip-172-31-83-173.ec2.internal  --tlsCAFile /etc/pki/tls/server-cert.pem
+
+CERT SETUP FOR CLIENT
+hostname
+#ip-172-31-93-53.ec2.internal
+
+
+openssl genrsa -out client.key 2048
+openssl req -new -key client.key -out client.csr
+openssl x509 -req -days 1000 -in client.csr        -CA CA-cert.pem -CAkey CA-key.pem -CAcreateserial -out client-cert.pem
+cat client-cert.pem client.key > clientfile.pem
+
+cat server-cert.pem
+cat clientfile.pem
+
+ON CLIENT
+cd /etc/pki/tls
+cat server-cert.pem
+cat clientfile.pem
+
+mongo --tls --host ip-172-31-83-173.ec2.internal --tlsCertificateKeyFile /etc/pki/tls/clientfile.pem --tlsCAFile /etc/pki/tls/server-cert.pem
