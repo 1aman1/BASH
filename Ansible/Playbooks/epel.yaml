@@ -1,6 +1,6 @@
 ---
 - name: Install epel
-  hosts: epel
+  hosts: microserversgroup
   become: true
 
   tasks:
