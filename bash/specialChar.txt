@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# "" is not the same as ''
+
+echo "$PATH"
+echo '$PATH'
+
+
+#---OUTPUT---/
+
+bash specialChar.sh
+/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/amang/.local/bin:/home/amang/bin
+$PATH
+
+/---OUTPUT---#
