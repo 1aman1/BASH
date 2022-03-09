@@ -1,0 +1,1 @@
+Bash script is an executable file containing set of steps, or commands that we want to automate rather than executing them manually.
