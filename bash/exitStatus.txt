@@ -1,0 +1,37 @@
+#!/bin/bash
+
+mkdir ~/Backup && echo "created folder" || echo " folder already there "
+touch ~/new
+cp ~/neww ~/Backup && echo "backedup" || echo $? && echo " ERROR ! "
+
+#---OUTPUT--->>
+
+mkdir: cannot create directory ‘/home/amang/Backup’: File exists
+ folder already there
+cp: cannot stat ‘/home/amang/neww’: No such file or directory
+1
+ ERROR !
+
+<---OUTPUT---#
+
+#!/bin/bash
+
+mkdir ~/Backup && echo "created folder" || echo " folder already there "
+touch ~/new
+cp ~/neww ~/Backup && echo "backedup" || echo $? && echo " ERROR ! "
+
+exit 127
+
+#---OUTPUT--->>
+
+mkdir: cannot create directory ‘/home/amang/Backup’: File exists
+ folder already there
+cp: cannot stat ‘/home/amang/neww’: No such file or directory
+1
+ ERROR !
+
+
+>> echo $?
+127
+
+<---OUTPUT---#
