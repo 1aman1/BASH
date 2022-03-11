@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "creating folder" && mkdir ~/Backup 2> /dev/null || echo " folder already there "
+touch ~/new
+echo "copying" && cp -v ~/new ~/Backup > log_file 2>&1
+
+#---OUTPUT--->>
+
+creating folder
+ folder already there
+copying
+
+cat log_file
+‘/home/amang/new’ -> ‘/home/amang/Backup/new’
+
+<---OUTPUT---#
