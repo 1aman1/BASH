@@ -1,0 +1,21 @@
+[amang@cloud ~]$ NUMBERS=(0 11 two three "whats after three")
+[amang@cloud ~]$ echo ${NUMBERS[3]}
+three
+[amang@cloud ~]$ echo ${NUMBERS[@]}
+0 11 two three whats after three
+[amang@cloud ~]$ echo ${NUMBERS[4]}
+whats after three
+[amang@cloud ~]$ echo ${#NUMBERS[4]}
+17
+[amang@cloud ~]$ echo ${#NUMBERS[@]}
+5
+[amang@cloud ~]$ echo ${!NUMBERS[@]}
+0 1 2 3 4
+[amang@cloud ~]$ NUMBERS+=(4)
+[amang@cloud ~]$ echo ${NUMBERS[5]}
+4
+[amang@cloud ~]$ echo ${!NUMBERS[@]}
+0 1 2 3 4 5
+[amang@cloud ~]$ echo ${NUMBERS[@]:2}
+two three whats after three 4
+[amang@cloud ~]$
