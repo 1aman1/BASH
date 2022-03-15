@@ -1,0 +1,12 @@
+#!/bin/bash
+
+BACKUP_SOURCE=/home/$USER
+BACKUP_TARGET=/home/$USER/Backup/
+LOGFILE=log_file
+
+echo "creating folder" && mkdir $BACKUP_TARGET 2> /dev/null || echo " folder already there "
+touch $BACKUP_SOURCE/new
+echo "copying" && cp -v $BACKUP_SOURCE/new $BACKUP_TARGET > $LOGFILE 2>&1
+
+#use local for limited scope with ()
+local LOGFILE=log_file
