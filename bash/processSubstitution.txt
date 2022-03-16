@@ -1,0 +1,6 @@
+cat <(echo "text")
+text        
+echo <(echo "abe")
+/dev/fd/63
+
+diff <(ls /usr) <(ls /bin)
