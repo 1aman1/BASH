@@ -1,0 +1,26 @@
+
+[amang@cloud ~]$ which ls
+alias ls='ls --color=auto'
+        /usr/bin/ls
+[amang@cloud ~]$ rpm -qf /usr/bin/ls
+coreutils-8.22-24.amzn2.x86_64
+[amang@cloud ~]$ rpm -qf `which yum`
+yum-3.4.3-158.amzn2.0.4.noarch
+[amang@cloud ~]$ rpm -qf $(which yum)
+yum-3.4.3-158.amzn2.0.4.noarch
+[amang@cloud ~]$ which mongo
+/usr/bin/mongo
+[amang@cloud ~]$ rpm -qf $(which /usr/bin/mongo)
+mongodb-org-shell-3.6.23-1.amzn1.x86_64
+[amang@cloud ~]$ date +"%r"
+07:55:14 AM
+[amang@cloud ~]$ date +"%x"
+03/10/1983
+[amang@cloud ~]$ date +"%Z"
+UTC
+[amang@cloud ~]$ date +"%x %r %Z"
+03/10/1983 07:55:34 AM UTC
+[amang@cloud ~]$cat script.sh
+#!/bin/bash
+
+echo " $(date +"%x %r %Z") " >> filename.txt
