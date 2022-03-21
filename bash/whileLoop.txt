@@ -1,0 +1,16 @@
+[amang@cloud bash]$ cat script.sh
+#!/bin/bash
+
+mkdir -p /home/$USER/bash/whileloop/
+cd /home/$USER/bash/whileloop/
+
+VAR=0
+while [ $VAR -lt 10 ] ; do
+  touch file$VAR;
+  let VAR=VAR+1
+done
+
+
+[amang@cloud bash]$ ls whileloop/
+file0  file1  file2  file3  file4  file5  file6  file7  file8  file9
+[amang@cloud bash]$
