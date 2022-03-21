@@ -1,0 +1,14 @@
+[amang@cloud bash]$ cat script.sh
+#!/bin/bash
+
+mkdir -p /home/$USER/bash/untilloop/
+cd /home/$USER/bash/untilloop/
+
+VAR=20
+until [ $VAR -lt 10 ] ; do
+  touch file$VAR
+  let VAR-=1
+  sleep 1
+done
+[amang@cloud bash]$ ls untilloop/
+file14  file15  file16  file17  file18  file19  file20
