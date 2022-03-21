@@ -1,0 +1,43 @@
+[amang@cloud bash]$ cat script.sh
+#!/bin/bash
+
+cd /home/$USER/bash
+
+mkdir -p SOURCE && echo " directory created " || echo " directoryalready there  "
+cd SOURCE
+for i in $( seq 1 5 ) ; do
+        touch file-$i;
+done
+
+[amang@cloud bash]$ bash script.sh
+ directory created
+[amang@cloud bash]$ ls SOURCE/
+file-1  file-2  file-3  file-4  file-5
+
+
+
+
+
+
+loop - append backup to names
+
+[amang@cloud bash]$ cat script.sh
+#!/bin/bash
+
+cd /home/$USER/bash
+
+mkdir -p TARGET && echo " directory created " || echo " directory already there  "
+cd SOURCE/
+for i in $( ls) ; do
+        cp -v $i ../TARGET/$i-backup ;
+done
+
+[amang@cloud bash]$ bash script.sh
+ directory created
+‘file-1’ -> ‘../TARGET/file-1-backup’
+‘file-2’ -> ‘../TARGET/file-2-backup’
+‘file-3’ -> ‘../TARGET/file-3-backup’
+‘file-4’ -> ‘../TARGET/file-4-backup’
+‘file-5’ -> ‘../TARGET/file-5-backup’
+[amang@cloud bash]$ ls TARGET/
+file-1-backup  file-2-backup  file-3-backup  file-4-backup  file-5-backup
