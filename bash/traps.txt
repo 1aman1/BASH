@@ -1,0 +1,26 @@
+[amang@cloud bash]$ cat script.sh
+#!/bin/bash
+
+mkdir -p /home/$USER/bash/untilloop/
+cd /home/$USER/bash/untilloop/
+
+cleanup () {
+rm -rf /home/$USER/bash/untilloop
+exit
+}
+
+trap cleanup SIGINT
+
+VAR=20
+until [ $VAR -lt 10 ] ; do
+  touch file$VAR
+  let VAR-=1
+  sleep 1
+done
+
+
+[amang@cloud bash]$ ls
+script.sh  SOURCE  TARGET  whileloop
+[amang@cloud bash]$ bash script.sh
+^C[amang@cloud bash]$ ls
+script.sh  SOURCE  TARGET  whileloop
