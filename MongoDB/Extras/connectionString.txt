@@ -1,0 +1,5 @@
+mongodb://  [username:password@]               host1    [:port1][,host2[:port2],...[,hostN[:portN]]]        [    /   [database]   [ ?options ]  ] 
+
+example:-
+mongodb://  newfiatmwuser:FIatmwUser@    10.25.52.136:27017,10.25.53.83:27017,10.25.26.246:27017  /   fiatmwdb      ?replicaSet=rs0
+

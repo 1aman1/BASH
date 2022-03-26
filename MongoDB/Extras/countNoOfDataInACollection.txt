@@ -1,0 +1,59 @@
+const {
+
+MongoClient,
+
+ObjectId
+
+} = require('mongodb');
+
+const _ = require('lodash');
+
+CONNECTION_URL='mongodb://user:pwd@10.0.0.3:27017/db?replicaSet=rs0';
+
+DB_NAME='db';
+
+COLLECTION_NAME='1abb78eb5b15a27a'
+
+MongoClient.connect(CONNECTION_URL, {
+
+useNewUrlParser: true
+
+}, (err, client) => {
+
+let db = client.db(DB_NAME);
+
+if (err) {
+
+console.log('unable to connect to the database');
+
+} else {
+
+console.log('test connection to the database');
+
+};
+
+db.collection(COLLECTION_NAME).find(
+
+)
+
+.toArray((err, result) => {
+
+if (err) {
+
+console.log('The search errored');
+
+} else if (_.isEmpty(result)) {
+
+console.log('record not found')
+
+} else {
+
+console.log("Total record count is ",result.length);
+
+};
+
+});
+
+client.close();
+
+})

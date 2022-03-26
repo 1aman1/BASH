@@ -1,0 +1,42 @@
+const {
+
+MongoClient,
+
+ObjectId
+
+} = require('mongodb');
+
+const _ = require('lodash');
+
+CONNECTION_URL= 'mongodb://user:pwd@10.0.0.3:27017/db?replicaSet=rs0';
+
+DB_NAME='db';
+
+SOURCE_COLLECTION_NAME='1abb78eb5b15a27a'
+
+DEST_COLLECTION_NAME='cat';
+
+async function run(){
+
+const client = await MongoClient.connect(CONNECTION_URL, {
+
+useNewUrlParser: true,
+
+useUnifiedTopology: true,
+
+});
+
+const db = client.db(DB_NAME);
+
+const source = await db.collection(SOURCE_COLLECTION_NAME)
+
+data = await source.aggregate([{$match:{}},{ $out: DEST_COLLECTION_NAME }])
+
+await data.toArray()
+
+client.close();
+
+}
+
+run()
+

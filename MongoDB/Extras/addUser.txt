@@ -1,0 +1,37 @@
+use admin
+
+db.createUser(
+{
+user: "admin",
+pwd: "admin",
+roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+}
+)
+
+------OR---------------
+
+db.createUser(
+{
+user: "admin",
+pwd: "admin",
+roles: [ { role: "userAdminAnyDatabase", db: "admin" } ],
+passwordDigestor: "server"
+}
+)
+
+TO TEST
+EXIT Mongo Shell
+
+use admin
+db.auth("admin", "admin")
+---------------------
+
+use newprojdb
+
+db.createUser(
+{
+user: "DBuser",
+pwd: "DBUSeRPwD",
+roles: [ { role: "readWrite", db: "newprojdb" } ]
+}
+)	
