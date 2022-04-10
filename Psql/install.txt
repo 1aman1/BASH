@@ -1,0 +1,22 @@
+ONE of the many ways.
+
+
+yum install gcc zlib-devel readline-devel
+wget https://ftp.postgresql.org/pub/source/v10.0/postgresql-10.0.tar.bz2
+tar -xvf postgresql-10.0.tar.bz2
+cd postgresql-10.0
+mkdir /opt/PostgreSQL-10/
+./configure --prefix=/opt/PostgreSQL-10
+make
+make install
+useradd postgres
+passwd postgres
+mkdir /pgdatabase/data
+chown -R postgres. /pgdatabase/data
+echo 'export PATH=$PATH:/opt/PostgreSQL-10/bin' > /etc/profile.d/postgres.sh
+su postgres
+initdb -D /pgdatabase/data/ -U postgres -W
++
+conf edit, port
+
+pg_ctl -D /pgdatabase/data/ -l /pglog/db_logs/start.log start

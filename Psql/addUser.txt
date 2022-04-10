@@ -1,0 +1,10 @@
+CREATE DATABASE newcmdbmig;
+CREATE USER stgmigcertifycm WITH ENCRYPTED PASSWORD 'DLTLaBss412';
+GRANT ALL PRIVILEGES ON DATABASE newcmdbmig TO stgmigcertifycm;
+
+
+CREATE USER psqlreaduser WITH ENCRYPTED PASSWORD 'psqlReadOnly';
+GRANT SELECT ON DATABASE newpmdbmig TO psqlreaduser;
+
+
+

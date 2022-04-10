@@ -1,0 +1,17 @@
+create or replace function copy_my_tables ()
+returns void language plpgsql as $$
+declare
+    r record;
+begin
+    for r in
+        select table_schema, table_name
+        from information_schema.tables
+        where table_type = 'BASE TABLE'
+        and table_schema = 'public'
+    loop
+        execute format ('copy %s.%s to ''/data/postgresbackup/certify/%s_%s.csv'' DELIMITER '','' CSV HEADER',
+            r.table_schema, r.table_name, r.table_schema, r.table_name);
+    end loop;
+end $$;
+
+select copy_my_tables ();

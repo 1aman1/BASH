@@ -1,0 +1,16 @@
+TAKE DUMP
+
+pg_dump -U proddlcertify certifydatabase1 > /data/pgsql/data/cmdb.pgsql
+
+pg_dump -U qadlcertify qadlcertify > /data/pgsql/pmdb.sql
+
+
+-----------
+
+RESTORATION
+
+
+psql -U prodmigcertifycm newcmdbmig < /data/pgsql/data/cmdb.sql
+
+psql -U prodmigcertifypm newpmdbmig < /data/pgsql/data/pmdb.sql
+

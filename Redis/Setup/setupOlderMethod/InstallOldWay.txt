@@ -1,0 +1,27 @@
+
+         yum install -y gcc make
+   98  wget http://download.redis.io/releases/redis-5.0.4.tar.gz
+   99  tar xzf redis-5.0.4.tar.gz
+  100  rm -f redis-5.0.4.tar.gz
+  101  cd redis-5.0.4/
+  102  make distclean
+  103  make
+  104  yum install -y tcl
+  105  mkdir -p /etc/redis /var/lib/redis /var/redis/6379
+  106  cp src/redis-server src/redis-cli /usr/local/bin/
+  107  cp redis.conf /etc/redis/redis.conf
+  108  vim /etc/redis/6379.conf
+  109  cp redis.conf /etc/redis/redis.conf
+  110  vim /etc/redis/redis.conf
+  111  sudo wget https://raw.githubusercontent.com/saxenap/install-redis-amazon-linux-centos/master/redis-server
+  112  cp redis-server /etc/init.d
+  113  chmod 755 /etc/init.d/redis-server
+  114  vim /etc/init.d/redis-server
+  115  chkconfig --add redis-server
+  116  chkconfig --level 345 redis-server on
+  117  service redis-server start
+  118  vim /etc/init.d/redis-server
+  119  service redis-server restart
+  120  systemctl daemon-reload
+  121  service redis-server restart
+  122  service redis-server status

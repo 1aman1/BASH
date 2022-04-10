@@ -1,0 +1,28 @@
+#!/bin/bash
+
+Year=`date "+%Y"`
+Month=`date "+%B"`
+DATESUFFIX=`date +%m%d%y`
+DESTNFILE=/destn/logFolder/psql-$DATESUFFIX
+
+pg_dumpall > $DESTNFILE
+
+if [ ! -e $DESTNFILE ]
+    then echo "BACKUP NOT DONE : EXITING !! "
+            exit
+    else
+        echo "--------------------------------------------- Completed STEP 1/4-dump taken---------------------------------------------"
+fi
+
+cd /destn/logFolder
+zip -r psql-$DATESUFFIX.zip psql-$DATESUFFIX
+echo "--------------------------------------------- Completed STEP 2/4-compressed dump file---------------------------------------------"
+
+aws s3 cp /destn/logFolder/psql-$DATESUFFIX.zip /DB_BACKUPS/$Year/$Month/$DATESUFFIX/
+echo "--------------------------------------------- Completed STEP 3/4-Backedup to S3---------------------------------------------"
+
+rm -rf /destn/logFolder/psql-$DATESUFFIX.zip
+rm -rf /destn/logFolder/psql-$DATESUFFIX
+echo "--------------------------------------------- Completed STEP 4/4-Deleting local file---------------------------------------------"
+
+echo -e "\e[1;31m ---------Backup finished for $DATESUFFIX ----!!  \e[0m"

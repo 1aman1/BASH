@@ -1,0 +1,15 @@
+Stop redis with:
+
+sudo systemctl stop redis
+sudo systemctl disable redis
+Change into install location as per the tutorial link:
+
+cd redis-stable
+sudo make uninstall
+Get rid of the folders created:
+
+sudo rm /etc/redis/redis.conf
+sudo rm -rf /var/lib/redis
+Remove redis user:
+
+sudo deluser redis
