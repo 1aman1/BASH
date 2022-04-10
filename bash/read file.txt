@@ -1,0 +1,21 @@
+# read file line by line
+
+#!/bin/bash
+
+FILENAME=text.txt
+
+while read -r line
+do echo "$line"
+done < $FILENAME
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#read file by asking filename
+
+#!/bin/bash
+echo " enter filename to read "
+read FILENAME
+
+while read -r oneline
+do echo "$oneline"
+done < $FILENAME
