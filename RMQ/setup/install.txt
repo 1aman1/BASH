@@ -1,0 +1,43 @@
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+wget  https://github.com/rabbitmq/erlang-rpm/releases/download/v19.3.6.2/erlang-19.3.6.2-1.el6.x86_64.rpm
+rpm -Uvh erlang-19.3.6.2-1.el6.x86_64.rpm
+yum provides libtinfo
+yum provides erlang
+yum install -y erlang-R16B-03.18.el7.x86_64
+erl -v
+yum provides socat
+yum install -y socat-1.7.3.2-2.amzn2.0.1.x86_64
+wget https://www.rabbitmq.com/releases/rabbitmq-server/v3.6.10/rabbitmq-server-3.6.10-1.el7.noarch.rpm
+rpm --import https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+rpm -Uvh rabbitmq-server-3.6.10-1.el7.noarch.rpm
+systemctl start rabbitmq-server
+systemctl enable rabbitmq-server
+systemctl status rabbitmq-server
+rabbitmq-plugins enable rabbitmq_management
+chown -R rabbitmq:rabbitmq /var/lib/rabbitmq/
+rabbitmqctl add_user devmquser password
+rabbitmqctl set_permissions -p / devmquser  ".*" ".*" ".*"
+rabbitmqctl set_user_tags devmquser administrator
+ulimit -n 64000
+ulimit -n 65536 65536
+systemctl restart rabbitmq-server
+systemctl status rabbitmq-server
+
+rabbitmqctl list_users
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+vim /etc/yum.repos.d/epel.repo
+yum install -y erlang --enablerepo=epel
+wget https://github.com/rabbitmq/rabbitmq-server/releases/download/rabbitmq_v3_5_8/rabbitmq-server-3.5.8-1.noarch.rpm
+rpm -Uvh rabbitmq-server-3.5.8-1.noarch.rpm
+rabbitmq-plugins enable rabbitmq_management
+/etc/init.d/rabbitmq-server restart
+rabbitmqctl add_user rmqUser RMQuseRPASS
+rabbitmqctl set_permissions -p / rmqUser ".*" ".*" ".*"
+rabbitmqctl set_user_tags rmqUser administrator
+ulimit -n 64000
+ulimit -n 65536 65536
+/etc/init.d/rabbitmq-server restart
