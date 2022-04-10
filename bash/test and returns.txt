@@ -1,0 +1,31 @@
+
+[amang@cloud bash]$ cat script.sh
+#!/bin/bash
+
+if [ -z $1 ]
+then
+        echo " need parameter "
+         exit 255
+fi
+
+
+check () {
+if [ -d TARGET  ]
+then
+        echo " folder here "
+        return 0
+else
+        mkdir TARGETT
+        return 1
+fi
+
+}
+if (check)
+then echo "ok"
+else echo "ko"
+fi
+[amang@cloud bash]$ bash script.sh
+ need parameter
+[amang@cloud bash]$ bash script.sh TARGET
+ folder here
+ok
