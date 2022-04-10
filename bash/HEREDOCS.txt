@@ -1,0 +1,24 @@
+[amang@cloud bash]$ cat << SOMETEXT
+> text like repo
+> SOMETEXT
+text like repo
+
+
+[amang@cloud bash]$ cat << SOMETEXT > FILENAME.txt
+> text like repo
+> $USER is running this script
+> SOMETEXT
+
+[amang@cloud bash]$ cat FILENAME.txt
+text like repo
+amang is running this script
+
+[amang@cloud bash]$ cat << "SOMETEXT" > FILENAME.txt
+text like repo
+$USER is running this script
+SOMETEXT
+
+[amang@cloud bash]$ cat FILENAME.txt
+text like repo
+$USER is running this script
+[amang@cloud bash]$
