@@ -1,32 +1,24 @@
 #!/bin/bash
-cat << EOF > /etc/yum.repos.d/cassandra.repo
-[cassandra]
-name=Apache Cassandra
-baseurl=https://downloads.apache.org/cassandra/redhat/40x/
-gpgcheck=1
-repo_gpgcheck=1
-gpgkey=https://downloads.apache.org/cassandra/KEYS
-EOF
 
-yum install -y  cassandra
-service cassandra start
-service cassandra status
-service cassandra stop
-service cassandra status
-mkdir /CUSTOMLOCATION
-cd /CUSTOMLOCATION
+# stop operation
+systemctl stop cassandra
+systemctl status cassandra
+
+cd /ANOTHERDIRECTORY
 mkdir -p cassandra/db/
 mkdir -p cassandra/logs/
 chown -R cassandra:cassandra cassandra
-mv -f /var/lib/cassandra /CUSTOMLOCATION/cassandra/db/
+
+mv -f /var/lib/cassandra /ANOTHERDIRECTORY/cassandra/db/
 cd /var/lib/
-ln -s /CUSTOMLOCATION/cassandra/db/cassandra .
+ln -s /ANOTHERDIRECTORY/cassandra/db/cassandra .
 chown -R cassandra:cassandra cassandra
-mv -f /var/log/cassandra /CUSTOMLOCATION/cassandra/logs/
+
+mv -f /var/log/cassandra /ANOTHERDIRECTORY/cassandra/logs/
 cd /var/log/
-ln -s /CUSTOMLOCATION/cassandra/logs/cassandra .
+ln -s /ANOTHERDIRECTORY/cassandra/logs/cassandra .
 chown -R cassandra:cassandra cassandra
-service cassandra status
-service cassandra start
-service cassandra status
-chkconfig cassandra on
+
+# resume operation
+systemctl start cassandra
+systemctl status cassandra
