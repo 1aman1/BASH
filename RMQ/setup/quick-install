@@ -1,0 +1,2 @@
+yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v19.3.6.2/erlang-19.3.6.2-1.el7.centos.x86_64.rpm && yum install https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.6/rabbitmq-server-3.7.6-1.el6.noarch.rpm && systemctl start rabbitmq-server && systemctl enable rabbitmq-server && service rabbitmq-server status && rabbitmq-plugins enable rabbitmq_management && systemctl restart rabbitmq-server && rabbitmqctl add_user USERNAME PASSWORD && rabbitmqctl set_user_tags USERNAME administrator && rabbitmqctl set_permissions -p / ".*" ".*" ".*"
+
